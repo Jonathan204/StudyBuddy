@@ -1,13 +1,30 @@
 import React from 'react';
-import DeviceEmulator from 'react-device-emulator';
-import 'react-device-emulator/lib/styles/style.css';
+import { Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css"; //This is required for react bootstrap CSS styling
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Account from "./components/Account/Account";
+
 function App() {
   return (
-    <div>
-    <DeviceEmulator type="mobile" withDeviceSwitch withRotator>
-      <h1>Welcome to React Device Emulator</h1>
-    </DeviceEmulator>
-  </div>
+    <div class="Emulator">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Container>
+                <Account />
+              </Container>
+            </Route>
+            <Route path="/sliders">
+              
+              
+            </Route>
+          </Switch>
+        </Router>
+    </div>
   );
 }
 
