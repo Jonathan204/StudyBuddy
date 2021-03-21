@@ -28,7 +28,7 @@ const SelfMetrics = () => {
       </Row>
       <Row className="mt-4 text-left">
         <Col>
-          <h5>Set your metrics.</h5>
+          <h5 className="mb-2">Set your metrics.</h5>
           <p>What type of study buddy are you?</p>
           <div className="mx-3">
           <h5 className="text-left">Chatty</h5>
