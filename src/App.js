@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Account from "./components/Account/Account";
+import MainPage from "./components/MainPage/MainPage";
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
             <Route path="/sliders">
               
               
+            </Route>
+            <Route path="/home">
+              <Container>
+                <MainPage />  
+              </Container>
             </Route>
           </Switch>
         </Router>

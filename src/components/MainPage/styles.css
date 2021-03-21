@@ -1,0 +1,46 @@
+
+.btn-primary, btn-primary:hover, btn-primary:active, btn-primary:visited {
+    background-color: #3A506B !important; 
+    color: white;
+}
+
+.btn-secondary, btn-secondary:hover, btn-secondary:active, btn-secondary:visited {
+    background-color: #EEF1EF !important;
+    color: black;
+}
+
+.top-buffer {
+    margin-top: 140px !important;
+}
+
+.mid-buffer {
+    margin-top: 70px !important;
+}
+
+  
+  .account-height {
+    height: 550px;
+  }
+  
+  .align-text-center {
+    text-align: center;
+  }
+  
+  .button-column {
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  
+  .account-window {
+    height: 550px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+    margin-top: 150px;
+    background-color: #1C2541;
+  }
+  
