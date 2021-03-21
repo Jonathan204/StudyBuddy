@@ -11,9 +11,8 @@ const Login = () => {
     username: "",
     password: "",
   });
+
   const [errors, setErrors] = useState({});
-
-
   const { switchToSignup } = useContext(AccountContext);
   const history = useHistory();
 
@@ -27,18 +26,17 @@ const Login = () => {
     } else {
       setErrors({});
       history.push("/home");
-
     }
   };
 
   return (
-    <Container className="account-height">
-      <Row className="mt-4 align-text-center">
+    <Container className="login-height">
+      <Row className="mt-4 app-title">
         <Col>
           <h3>Study Buddy</h3>
         </Col>
       </Row>
-      <Form className="mt-5" noValidate onSubmit={handleSubmit}>
+      <Form className="mt-4 login-form" noValidate onSubmit={handleSubmit}>
         <Row className="flex-column">
           <Form.Group controlId="username">
             <Form.Control
@@ -75,16 +73,16 @@ const Login = () => {
             </Form.Control.Feedback>
           </Form.Group>
         </Row>
-        <Row className="mt-5">
+        <Row className="mt-3">
           <LoaderButton
-            className="submit-button"
+            className="login-button"
             type="submit"
             loading={false}
           >
             Login
           </LoaderButton>
         </Row>
-        <Row className="flex-column mt-3 align-text-center">
+        <Row className="flex-column mt-2 align-text-center">
           <p className="underline-on-hover" onClick={switchToSignup}>
             Don't have an account? Create one!
           </p>
