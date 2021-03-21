@@ -78,6 +78,11 @@ body {
   background-color: #A9B4C2;
 }
 
+.text-left h5 {
+  color: #0070FF;
+  margin: 0;
+}
+
 .align-text-center h5 {
   color: #0070FF;
   margin: 0;
