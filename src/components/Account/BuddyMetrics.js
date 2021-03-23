@@ -26,42 +26,45 @@ const BuddyMetrics = () => {
         <button onClick={switchToProfile}></button>
         <button onClick={switchToTags}></button>
       </Row>
-      <Row className="text-left-buddy">
+      <Row className="mt-4 text-left-buddy">
         <Col>
-          <h5 className="buddy mt-2">Identify your ideal study buddy.</h5>
-          <p className="text-left">What set of traits are you looking for?</p>
-          <div className="mx-3">
-          <h5 className="text-left">Chatty</h5>
+          <h5 className="mb-1">Identify your ideal study buddy.</h5>
+          <p>What set of traits are you looking for?</p>
+          <div>
+          <h5 className="mt-3 text-left">Chatty</h5>
           <RangeSlider
             value={chattyValue}
             onChange={changeEvent => setChattyValue(changeEvent.target.value)}
-            bsClass="custom-slider"
+            variant='warning'
           />
           <h5 className="text-left">Serious</h5>
           <RangeSlider
             value={seriousValue}
             onChange={changeEvent => setSeriousValue(changeEvent.target.value)}
-            
+            variant='warning'
           />          
           <h5 className="text-left">Friendly</h5>
           <RangeSlider
             value={friendlyValue}
             onChange={changeEvent => setFriendlyValue(changeEvent.target.value)}
+            variant='warning'
           />
           <h5 className="text-left">Brainy</h5>
           <RangeSlider
             value={brainyValue}
             onChange={changeEvent => setBrainyValue(changeEvent.target.value)}
+            variant='warning'
           />   
           <h5 className="text-left">Focused on grades</h5>
           <RangeSlider
             value={gradesValue}
             onChange={changeEvent => setGradesValue(changeEvent.target.value)}
+            variant='warning'
           /> 
           </div>
         </Col>
       </Row>
-      <Row className="mt-3 next-cancel-btn">
+      <Row className="mt-5 next-cancel-btn">
         <LoaderButton className="back-button" onClick={switchToSelfMetrics}>Back</LoaderButton>
         <LoaderButton className="next-button" onClick={switchToProfile}>Next</LoaderButton>
       </Row>

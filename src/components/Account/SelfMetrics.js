@@ -28,9 +28,9 @@ const SelfMetrics = () => {
       </Row>
       <Row className="mt-4 text-left">
         <Col>
-          <h5 className="mb-2">Set your metrics.</h5>
+          <h5 className="mb-1">Set your metrics.</h5>
           <p>What type of study buddy are you?</p>
-          <div className="mx-3">
+          <div>
           <h5 className="text-left">Chatty</h5>
           <RangeSlider
             value={chattyValue}
@@ -59,7 +59,7 @@ const SelfMetrics = () => {
           </div>
         </Col>
       </Row>
-      <Row className="mt-3 next-cancel-btn">
+      <Row className="mt-5 next-cancel-btn">
         <LoaderButton className="back-button" onClick={switchToCredentials}>Back</LoaderButton>
         <LoaderButton className="next-button" onClick={switchToBuddyMetrics}>Next</LoaderButton>
       </Row>
