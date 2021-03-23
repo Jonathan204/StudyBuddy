@@ -4,6 +4,7 @@ import { AccountContext } from "./AccountContext";
 import { RegisterContext } from "./RegisterContext";
 import LoaderButton from "../Button/LoadingButton";
 import validate from "./validation";
+import { Next } from "react-bootstrap/esm/PageItem";
 
 const Credentials = () => {
   const [validated, setValidated] = useState(false);
@@ -28,6 +29,8 @@ const Credentials = () => {
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       event.stopPropagation();
+    } else {
+      setErrors({});
     }
   };
 
@@ -35,10 +38,10 @@ const Credentials = () => {
     <Container className="register">
       <Row className="mt-2 register-nav">
         <button className="active-nav-btn"></button>
-        <button onClick={switchToSelfMetrics}></button>
-        <button onClick={switchToBuddyMetrics}></button>
-        <button onClick={switchToProfile}></button>
-        <button onClick={switchToTags}></button>
+        <button className="nav-btn" onClick={switchToSelfMetrics} disabled={!validated}></button>
+        <button className="nav-btn" onClick={switchToBuddyMetrics} disabled={!validated}></button>
+        <button className="nav-btn" onClick={switchToProfile} disabled={!validated}></button>
+        <button className="nav-btn" onClick={switchToTags} disabled={!validated}></button>
       </Row>
       <Row className="mt-4 align-text-center">
         <Col>
@@ -46,7 +49,7 @@ const Credentials = () => {
           <p>Let's create your account.</p>
         </Col>
       </Row>
-      <Form className="mt-1" noValidate onSubmit={handleSubmit}>
+      <Form className="mt-1 credentials-form" noValidate onSubmit={handleSubmit}>
         <Row className="flex-column">
           <Form.Group controlId="username">
             <Form.Control
@@ -121,13 +124,13 @@ const Credentials = () => {
           </Form.Group>
         </Row>
         <Row>
-          <LoaderButton className="submit-button" type="submit" onClick={switchToSignin}>
+          <LoaderButton className="submit-button" type="submit">
             Verify
           </LoaderButton>
         </Row>
         <Row className="mt-5 next-cancel-btn">
-          <LoaderButton className="cancel-button" onClick={switchToSignin}>Cancel</LoaderButton>
-          <LoaderButton className="next-button" onClick={switchToSelfMetrics}>Next</LoaderButton>
+          <button className="cancel-button" onClick={switchToSignin}>Cancel</button>
+          <button className="next-button" onClick={switchToSelfMetrics} disabled={!validated}>Next</button>
         </Row>
       </Form>
     </Container>
