@@ -11,11 +11,14 @@ const BuddyMetrics = () => {
   const { switchToProfile } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
 
-  const [ chattyValue, setChattyValue ] = useState(0); 
-  const [ seriousValue, setSeriousValue ] = useState(0); 
-  const [ friendlyValue, setFriendlyValue ] = useState(0); 
-  const [ brainyValue, setBrainyValue ] = useState(0); 
-  const [ gradesValue, setGradesValue ] = useState(0); 
+
+  const [buddyMetrics, setBuddyMetrics] = useState({
+    chattyValue: localStorage.getItem('buddyChatty'),
+    seriousValue: localStorage.getItem('buddySerious'),
+    friendlyValue: localStorage.getItem('buddyFriendly'),
+    brainyValue: localStorage.getItem('buddyBrainy'),
+    gradesValue: localStorage.getItem('buddyGrades'),
+  });
 
   return (
     <Container className="register">
@@ -33,32 +36,52 @@ const BuddyMetrics = () => {
           <div>
           <h5 className="mt-3 text-left">Chatty</h5>
           <RangeSlider
-            value={chattyValue}
-            onChange={changeEvent => setChattyValue(changeEvent.target.value)}
+            value={buddyMetrics.chattyValue ? buddyMetrics.chattyValue : 0}
+            onChange={(changeEvent) => {
+                setBuddyMetrics({ ...buddyMetrics, chattyValue: changeEvent.target.value});
+                localStorage.setItem('buddyChatty', changeEvent.target.value);
+              }
+            }
             variant='warning'
           />
           <h5 className="text-left">Serious</h5>
           <RangeSlider
-            value={seriousValue}
-            onChange={changeEvent => setSeriousValue(changeEvent.target.value)}
+            value={buddyMetrics.seriousValue ? buddyMetrics.seriousValue : 0}
+            onChange={(changeEvent) => {
+                setBuddyMetrics({ ...buddyMetrics, seriousValue: changeEvent.target.value});
+                localStorage.setItem('buddySerious', changeEvent.target.value);
+              }
+            }
             variant='warning'
           />          
           <h5 className="text-left">Friendly</h5>
           <RangeSlider
-            value={friendlyValue}
-            onChange={changeEvent => setFriendlyValue(changeEvent.target.value)}
+            value={buddyMetrics.friendlyValue ? buddyMetrics.friendlyValue : 0}
+            onChange={(changeEvent) => {
+                setBuddyMetrics({ ...buddyMetrics, friendlyValue: changeEvent.target.value});
+                localStorage.setItem('buddyFriendly', changeEvent.target.value);
+              }
+            }
             variant='warning'
           />
           <h5 className="text-left">Brainy</h5>
           <RangeSlider
-            value={brainyValue}
-            onChange={changeEvent => setBrainyValue(changeEvent.target.value)}
+            value={buddyMetrics.brainyValue ? buddyMetrics.brainyValue : 0}
+            onChange={(changeEvent) => {
+                setBuddyMetrics({ ...buddyMetrics, brainyValue: changeEvent.target.value});
+                localStorage.setItem('buddyBrainy', changeEvent.target.value);
+              }
+            }
             variant='warning'
           />   
           <h5 className="text-left">Focused on grades</h5>
           <RangeSlider
-            value={gradesValue}
-            onChange={changeEvent => setGradesValue(changeEvent.target.value)}
+            value={buddyMetrics.gradesValue ? buddyMetrics.gradesValue : 0}
+            onChange={(changeEvent) => {
+                setBuddyMetrics({ ...buddyMetrics, gradesValue: changeEvent.target.value});
+                localStorage.setItem('buddyGrades', changeEvent.target.value);
+              }
+            }
             variant='warning'
           /> 
           </div>

@@ -12,7 +12,7 @@ import Messaging from "./components/Home/Chat/Messaging";
 
 function App() {
   return (
-    <div class="Emulator">
+    <div className="Emulator">
         <Router>
           <Switch>
             <Route exact path="/">
