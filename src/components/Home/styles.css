@@ -20,3 +20,20 @@
 .mid-buffer {
     margin-top: 70px !important;
 }
+
+.metrics-nav {
+    padding: 10px 15px;
+  }
+  
+.metrics-nav button {
+background-color: #445486;
+border: none;
+border-radius: 3px;
+padding: 8px 10px;
+width: 50%;
+margin: auto;
+}
+
+.metrics-nav button:hover {
+background-color: #A9B4C2;
+}
