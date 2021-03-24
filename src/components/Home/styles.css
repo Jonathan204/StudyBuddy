@@ -1,0 +1,51 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+.btn-primary, btn-primary:hover, btn-primary:active, btn-primary:visited {
+    background-color: blue !important; 
+    color: white !important;
+    border: none !important;
+}
+
+.btn-secondary, btn-secondary:hover, btn-secondary:active, btn-secondary:visited {
+    background-color: #EEF1EF !important;
+    color: black !important;
+    border: none !important;
+}
+
+.top-buffer {
+    margin-top: 140px !important;
+}
+
+.mid-buffer {
+    margin-top: 70px !important;
+}
+
+  
+  .account-height {
+    height: 550px;
+  }
+  
+  .align-text-center {
+    text-align: center;
+  }
+
+  
+  .account-window {
+    height: 550px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 2px 7px 1px rgba(0, 0, 0, 0.3);
+    margin-top: 150px;
+    background-color: #1C2541;
+  }
+
+  body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #A9B4C2;
+  }
+  
