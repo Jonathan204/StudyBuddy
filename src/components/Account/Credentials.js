@@ -1,19 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState  } from "react";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import { AccountContext } from "./AccountContext";
 import { RegisterContext } from "./RegisterContext";
 import LoaderButton from "../Button/LoadingButton";
 import validate from "./validation";
-import { Next } from "react-bootstrap/esm/PageItem";
+
 
 const Credentials = () => {
+
   const [validated, setValidated] = useState(false);
   const [userData, setUserData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    username: localStorage.getItem('username'),
+    email: localStorage.getItem('email'),
+    password: localStorage.getItem('password'),
+    confirmPassword: localStorage.getItem('confirmPassword'),
   });
+
+
+
 
   const [errors, setErrors] = useState({});
   const { switchToSignin } = useContext(AccountContext);
@@ -21,7 +25,7 @@ const Credentials = () => {
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
-
+  
   const handleSubmit = (event) => {
     setValidated(true);
     event.preventDefault();
@@ -59,9 +63,12 @@ const Credentials = () => {
               placeholder="Username"
               isValid={validated && !errors.username}
               isInvalid={!!errors.username}
-              onChange={(e) =>
-                setUserData({ ...userData, username: e.target.value })
+              onChange={(e) => {
+                  setUserData({ ...userData, username: e.target.value })
+                  localStorage.setItem('username', e.target.value);
+                }
               }
+              defaultValue={localStorage.getItem('username')}
             />
             <Form.Control.Feedback type="invalid">
               {errors.username}
@@ -77,9 +84,12 @@ const Credentials = () => {
               placeholder="Password"
               isValid={validated && !errors.password}
               isInvalid={!!errors.password}
-              onChange={(e) =>
-                setUserData({ ...userData, password: e.target.value })
+              onChange={(e) => {
+                  setUserData({ ...userData, password: e.target.value })
+                  localStorage.setItem('password', e.target.value);
+                }
               }
+              defaultValue={localStorage.getItem('password')}
             />
             <Form.Control.Feedback type="invalid">
               {errors.password}
@@ -95,9 +105,12 @@ const Credentials = () => {
               placeholder="Confirm Password"
               isValid={validated && !errors.confirmPassword}
               isInvalid={!!errors.confirmPassword }
-              onChange={(e) =>
-                setUserData({ ...userData, confirmPassword: e.target.value })
+              onChange={(e) => {
+                  setUserData({ ...userData, confirmPassword: e.target.value })
+                  localStorage.setItem('confirmPassword', e.target.value);
+                }
               }
+              defaultValue={localStorage.getItem('confirmPassword')}
             />
             <Form.Control.Feedback type="invalid">
               {errors.confirmPassword}
@@ -116,7 +129,12 @@ const Credentials = () => {
               required
               isValid={validated && !errors.email}
               isInvalid={!!errors.email}
-              onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+              onChange={(e) => { 
+                  setUserData({ ...userData, email: e.target.value })
+                  localStorage.setItem('email', e.target.value)    
+                } 
+              } 
+              defaultValue={localStorage.getItem('email')}
             />
             <Form.Control.Feedback type="invalid">
               {errors.email}

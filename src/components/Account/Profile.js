@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { RegisterContext } from "./RegisterContext";
 import LoaderButton from "../Button/LoadingButton";
 
@@ -11,16 +11,18 @@ const Profile = () => {
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToSelfMetrics } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
-
+  const [selfProfile, setSelfProfile] = useState({
+    profilePicture: localStorage.getItem('selfProfilePic'),
+    bio: localStorage.getItem('selfBio'),
+  });
   const profilePictureRef = React.createRef();
 
   function handleUpload() {
-    const PP = this.profilePicture.current;
-    const imageData = PP.getData();
-    const file = imageData.file;
+    const PP = profilePictureRef.current;
     const imageAsDataURL = PP.getImageAsDataUrl();
-
-    //add here the upload logic...
+    setSelfProfile({ ...selfProfile, profilePicture: imageAsDataURL});
+    localStorage.setItem('selfProfilePic', imageAsDataURL);
+    
   }
 
   return (
@@ -36,15 +38,33 @@ const Profile = () => {
         <Col>
           <h5>Let's set up your profile.</h5>
           <ProfilePicture
-            ref={profilePictureRef}
-            useHelper={true}
-            debug={true}
+            image={selfProfile.profilePicture ? selfProfile.profilePicture : ""}
+            ref={ profilePictureRef}
+            useHelper={false}
+            debug={false}
             frameFormat={"circle"}
+            minImageSize={0}
+
+
           />
-          <button onClick={handleUpload}>Upload</button>
+          <button className="upload-btn mt-5" onClick={handleUpload}>Upload</button>
+          <Form.Group className="biography" controlId="textarea">
+            <Form.Label>Tell me about yourself!</Form.Label>
+            <Form.Control 
+              as="textarea" 
+              className="textarea" 
+              rows={2}          
+              onChange={(e) => {
+                  setSelfProfile({ ...selfProfile, bio: e.target.value })
+                  localStorage.setItem('selfBio', e.target.value);
+                }
+              }
+              defaultValue={localStorage.getItem('selfBio')}
+            />
+          </Form.Group>
         </Col>
       </Row>
-      <Row className="mt-5 next-cancel-btn">
+      <Row className="profile-btns next-cancel-btn">
         <LoaderButton className="back-button" onClick={switchToBuddyMetrics}>Back</LoaderButton>
         <LoaderButton className="next-button" onClick={switchToTags}>Next</LoaderButton>
       </Row>

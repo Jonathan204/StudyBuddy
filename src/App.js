@@ -10,7 +10,7 @@ import Account from "./components/Account/Account";
 
 function App() {
   return (
-    <div class="Emulator">
+    <div className="Emulator">
         <Router>
           <Switch>
             <Route exact path="/">

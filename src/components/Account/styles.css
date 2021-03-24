@@ -143,6 +143,21 @@ body {
   position: sticky;
 }
 
+.biography {
+  position: relative;
+  bottom: 45px;
+}
+.upload-btn {
+  position: relative;
+  bottom: 50px;
+}
+.profile-btns{
+  position: relative;
+  bottom: 40px;
+}
+.textarea {
+  resize: none;
+}
 .complete-button {
   background-color: #0070FF !important;
 }
@@ -185,13 +200,20 @@ body {
 }
 
 .suggested-tags li {
-  background-color: #00a651;
   color: #EEF1EF;
   padding: 2px 5px;
   border-radius: 15px;
   list-style-type: none;
   display: inline-block;
   margin: 3px;
+}
+
+.green-tag {
+  background-color: #00a651;
+}
+
+.blue-tag {
+  background-color: #0070ff;
 }
 
 .suggested-tags li:hover {
@@ -268,3 +290,4 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #888; 
 }
+

@@ -11,11 +11,13 @@ const SelfMetrics = () => {
   const { switchToProfile } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
 
-  const [ chattyValue, setChattyValue ] = useState(0); 
-  const [ seriousValue, setSeriousValue ] = useState(0); 
-  const [ friendlyValue, setFriendlyValue ] = useState(0); 
-  const [ brainyValue, setBrainyValue ] = useState(0); 
-  const [ gradesValue, setGradesValue ] = useState(0); 
+  const [selfMetrics, setSelfMetrics] = useState({
+    chattyValue: localStorage.getItem('selfChatty'),
+    seriousValue: localStorage.getItem('selfSerious'),
+    friendlyValue: localStorage.getItem('selfFriendly'),
+    brainyValue: localStorage.getItem('selfBrainy'),
+    gradesValue: localStorage.getItem('selfGrades'),
+  });
 
   return (
     <Container className="register">
@@ -33,28 +35,48 @@ const SelfMetrics = () => {
           <div>
           <h5 className="text-left">Chatty</h5>
           <RangeSlider
-            value={chattyValue}
-            onChange={changeEvent => setChattyValue(changeEvent.target.value)}
+            value={selfMetrics.chattyValue ? selfMetrics.chattyValue : 0}
+            onChange={(changeEvent) => {
+                setSelfMetrics({ ...selfMetrics, chattyValue: changeEvent.target.value});
+                localStorage.setItem('selfChatty', changeEvent.target.value);
+              }
+            }
           />
           <h5 className="text-left">Serious</h5>
           <RangeSlider
-            value={seriousValue}
-            onChange={changeEvent => setSeriousValue(changeEvent.target.value)}
+            value={selfMetrics.seriousValue ? selfMetrics.seriousValue : 0}
+            onChange={(changeEvent) => {
+                setSelfMetrics({ ...selfMetrics, seriousValue: changeEvent.target.value});
+                localStorage.setItem('selfSerious', changeEvent.target.value);
+              }
+            }
           />          
           <h5 className="text-left">Friendly</h5>
           <RangeSlider
-            value={friendlyValue}
-            onChange={changeEvent => setFriendlyValue(changeEvent.target.value)}
+            value={selfMetrics.friendlyValue ? selfMetrics.friendlyValue : 0}
+            onChange={(changeEvent) => {
+                setSelfMetrics({ ...selfMetrics, friendlyValue: changeEvent.target.value});
+                localStorage.setItem('selfFriendly', changeEvent.target.value);
+              }
+            }
           />
           <h5 className="text-left">Brainy</h5>
           <RangeSlider
-            value={brainyValue}
-            onChange={changeEvent => setBrainyValue(changeEvent.target.value)}
+            value={selfMetrics.brainyValue ? selfMetrics.brainyValue : 0}
+            onChange={(changeEvent) => {
+                setSelfMetrics({ ...selfMetrics, brainyValue: changeEvent.target.value});
+                localStorage.setItem('selfBrainy', changeEvent.target.value);
+              }
+            }
           />   
           <h5 className="text-left">Focused on grades</h5>
           <RangeSlider
-            value={gradesValue}
-            onChange={changeEvent => setGradesValue(changeEvent.target.value)}
+            value={selfMetrics.gradesValue ? selfMetrics.gradesValue : 0}
+            onChange={(changeEvent) => {
+                setSelfMetrics({ ...selfMetrics, gradesValue: changeEvent.target.value});
+                localStorage.setItem('selfGrades', changeEvent.target.value);
+              }
+            }
           /> 
           </div>
         </Col>

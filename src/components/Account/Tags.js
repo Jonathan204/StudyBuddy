@@ -10,6 +10,7 @@ const Tags = () => {
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
 
+  var loaded = false;
  const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -17,11 +18,75 @@ const Tags = () => {
     history.push("/home");
   };
 
-  const [suggestedTags] = useState(["Music", "Gaming", "Hockey", "Art", "Coffee", "Introvert", 
-                                      "Oats", "Politics", "Computers", "Boba", "Anime", "Athlete", 
-                                      "Food"]);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [suggestedTags, setSuggestedTags] = useState([
+    {
+     name: "Music",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Gaming",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Hockey",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Art",
+     selected: false,
+     custom: false,
+   }, 
+    {
+     name: "Coffee",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Introvert",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Oats",
+     selected: false,
+     custom: false,
+   },
+   {
+     name: "Politics",
+     selected: false,
+     custom: false,
+   },
+   {
+     name: "Computers",
+     selected: false,
+     custom: false,
+   },
+   {
+     name: "Boba",
+     selected: false,
+     custom: false,
+   },
+   {
+     name: "Anime",
+     selected: false,
+     custom: false,
+   },
+   {
+     name: "Athlete",
+     selected: false,
+     custom: false,
+   }, 
+   {
+     name: "Food",
+     selected: false,
+     custom: false,
+   }]);
 
+
+  const [selectedTags, setSelectedTags] = useState([]);
   const [newSearchTag, setNewSearchTag] = useState("");
   const [newSelectedTag, setNewSelectedTag] = useState({
     tag: "",
@@ -32,34 +97,58 @@ const Tags = () => {
     event.preventDefault();
 
     if (newSearchTag) {
-      const tags = selectedTags.slice(0);
-      tags.push(newSearchTag);
-  
-      setSelectedTags(tags);
+      const searchTag = {
+        name: newSearchTag,
+        selected: true,
+        custom: true
+      }
+      var copySuggestedTags = JSON.parse(localStorage.getItem("selectedTags"));
+      copySuggestedTags.push(searchTag);
+      localStorage.setItem('selectedTags', JSON.stringify(copySuggestedTags));
       setNewSearchTag("");
       document.getElementById("tag-search").value = "";
     }
   }
 
+
+
   useEffect(() => {
-    var list = document.getElementById("selected-list").getElementsByTagName("li");
 
-    if (newSelectedTag.tag && list[newSelectedTag.index]) {
-      var bgColor = list[newSelectedTag.index].style.backgroundColor;
+    if(!localStorage.getItem("selectedTags")){
+      localStorage.setItem("selectedTags", JSON.stringify(suggestedTags));
+    }
+    if (newSelectedTag.tag && suggestedTags[newSelectedTag.index]) {
+      var selected = JSON.parse(localStorage.getItem("selectedTags"))[newSelectedTag.index].selected;
+      var copySuggestedTags = JSON.parse(localStorage.getItem("selectedTags"));
+      var localTag = copySuggestedTags[newSelectedTag.index];
+      if (selected) {           
+          localTag.selected = false;
+          copySuggestedTags[newSelectedTag.index] = localTag; 
+          setSelectedTags(copySuggestedTags);
+          setSuggestedTags(copySuggestedTags);
+          localStorage.setItem('selectedTags', JSON.stringify(copySuggestedTags));
 
-      if (!bgColor || bgColor == "rgb(0, 166, 81)") {
-        const tags = selectedTags.slice(0);
-        tags.push(newSelectedTag.tag);
-        setSelectedTags(tags);
-        list[newSelectedTag.index].style.backgroundColor = "#0070ff";
-      } else if (bgColor == "rgb(0, 112, 255)") {
-        const tags = selectedTags.filter(tag => tag != newSelectedTag.tag);
-        setSelectedTags(tags);
-        list[newSelectedTag.index].style.backgroundColor = "rgb(0, 166, 81)";
+      } else{
+          localTag.selected = true;
+          copySuggestedTags[newSelectedTag.index] = localTag; 
+          setSelectedTags(copySuggestedTags);
+          setSuggestedTags(copySuggestedTags);
+          localStorage.setItem('selectedTags', JSON.stringify(copySuggestedTags));
+
       } 
     }
-
+    //console.log(suggestedTags);
   }, [newSelectedTag])
+
+  var tags;
+
+  if( JSON.parse(localStorage.getItem("selectedTags"))){
+    tags = JSON.parse(localStorage.getItem("selectedTags"));
+
+  }else {
+    tags = suggestedTags;
+    
+  }
 
   return (
     <Container className="register">
@@ -94,12 +183,14 @@ const Tags = () => {
       <Row className="mt-3 suggested-tags">
         <ul id="selected-list">
           {
-            suggestedTags.map((tag, index) => (
-              <li key={index} 
+            tags.filter(function(obj) {
+              return (!obj.custom);
+            }).map((tag, index) => (
+              <li key={index} className={tag.selected ? "blue-tag" : "green-tag"}
                 onClick={(e) => 
-                  setNewSelectedTag({...newSelectedTag, tag: tag, index: index})
+                  setNewSelectedTag({...newSelectedTag, tag: tag.name, index: index})
                 }>
-                <span>{tag}</span>  
+                <span>{tag.name}</span>  
               </li>
             ))
           }
@@ -110,9 +201,12 @@ const Tags = () => {
         <div className="mt-4 selected-tags">
           <ul>
             {
-              selectedTags.map((tag, index) => (
+              tags.filter(function(obj) {
+                return (obj.selected);
+              }).map((tag, index) => (
+                
                 <li key={index} >
-                  <span>{tag}</span>  
+                  <span>{tag.name}</span>  
                 </li>
               ))
             }
