@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Account from "./components/Account/Account";
 import Home from "./components/Home/Home";
+import Messaging from "./components/Home/Chat/Messaging";
 
 function App() {
   return (
@@ -27,7 +28,15 @@ function App() {
               <Container>
                 <Home />  
               </Container>
-            </Route>
+          </Route>
+          
+          <Route path="/messaging">
+              <Container>
+                <Messaging />  
+              </Container>
+          </Route>
+          
+
           </Switch>
         </Router>
     </div>
