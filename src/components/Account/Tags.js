@@ -9,7 +9,7 @@ const Tags = () => {
   const { switchToSelfMetrics } = useContext(RegisterContext);
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
-
+  const { switchToPersonalInfo } = useContext(RegisterContext);
   var loaded = false;
  const history = useHistory();
 
@@ -157,6 +157,7 @@ const Tags = () => {
         <button onClick={switchToSelfMetrics}></button>
         <button onClick={switchToBuddyMetrics}></button>
         <button onClick={switchToProfile}></button>
+        <button onClick={switchToPersonalInfo}></button>
         <button className="active-nav-btn"></button>
       </Row>
       <Row className="mt-4 tags-header">

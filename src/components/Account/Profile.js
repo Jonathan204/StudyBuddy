@@ -10,7 +10,9 @@ const Profile = () => {
   const { switchToCredentials } = useContext(RegisterContext);
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToSelfMetrics } = useContext(RegisterContext);
+  const { switchToPersonalInfo } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
+  
   const [selfProfile, setSelfProfile] = useState({
     profilePicture: localStorage.getItem('selfProfilePic'),
     bio: localStorage.getItem('selfBio'),
@@ -31,6 +33,7 @@ const Profile = () => {
         <button onClick={switchToCredentials}></button>
         <button onClick={switchToSelfMetrics}></button>
         <button onClick={switchToBuddyMetrics}></button>
+        <button onClick={switchToPersonalInfo}></button>
         <button className="active-nav-btn"></button>
         <button onClick={switchToTags}></button>
       </Row>
@@ -65,7 +68,7 @@ const Profile = () => {
         </Col>
       </Row>
       <Row className="profile-btns next-cancel-btn">
-        <LoaderButton className="back-button" onClick={switchToBuddyMetrics}>Back</LoaderButton>
+        <LoaderButton className="back-button" onClick={switchToPersonalInfo}>Back</LoaderButton>
         <LoaderButton className="next-button" onClick={switchToTags}>Next</LoaderButton>
       </Row>
     </Container>

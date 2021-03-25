@@ -24,6 +24,7 @@ const Credentials = () => {
   const { switchToSelfMetrics } = useContext(RegisterContext);
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
+  const { switchToPersonalInfo } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
   
   const handleSubmit = (event) => {
@@ -44,6 +45,7 @@ const Credentials = () => {
         <button className="active-nav-btn"></button>
         <button className="nav-btn" onClick={switchToSelfMetrics} disabled={!validated}></button>
         <button className="nav-btn" onClick={switchToBuddyMetrics} disabled={!validated}></button>
+        <button className="nav-btn" onClick={switchToPersonalInfo} disabled={!validated} ></button>
         <button className="nav-btn" onClick={switchToProfile} disabled={!validated}></button>
         <button className="nav-btn" onClick={switchToTags} disabled={!validated}></button>
       </Row>

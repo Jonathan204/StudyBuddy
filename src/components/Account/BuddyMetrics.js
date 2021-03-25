@@ -10,7 +10,7 @@ const BuddyMetrics = () => {
   const { switchToSelfMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
-
+  const { switchToPersonalInfo } = useContext(RegisterContext);
 
   const [buddyMetrics, setBuddyMetrics] = useState({
     chattyValue: localStorage.getItem('buddyChatty'),
@@ -26,7 +26,9 @@ const BuddyMetrics = () => {
         <button onClick={switchToCredentials}></button>
         <button onClick={switchToSelfMetrics}></button>
         <button className="active-nav-btn"></button>
+        <button onClick={switchToPersonalInfo}></button>
         <button onClick={switchToProfile}></button>
+
         <button onClick={switchToTags}></button>
       </Row>
       <Row className="mt-4 text-left-buddy">
@@ -89,7 +91,7 @@ const BuddyMetrics = () => {
       </Row>
       <Row className="mt-5 next-cancel-btn">
         <LoaderButton className="back-button" onClick={switchToSelfMetrics}>Back</LoaderButton>
-        <LoaderButton className="next-button" onClick={switchToProfile}>Next</LoaderButton>
+        <LoaderButton className="next-button" onClick={switchToPersonalInfo}>Next</LoaderButton>
       </Row>
     </Container>
   );

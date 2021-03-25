@@ -5,6 +5,7 @@ import Credentials from "./Credentials";
 import SelfMetrics from "./SelfMetrics";
 import BuddyMetrics from "./BuddyMetrics";
 import Profile from "./Profile";
+import PersonalInfo from "./PersonalInfo";
 import Tags from "./Tags";
 
 const Register = () => {
@@ -26,11 +27,15 @@ const Register = () => {
     setActiveWindow("registerProfile");
   }
 
+  const switchToPersonalInfo = () => {
+    setActiveWindow("registerPersonalInfo");
+  }
+
   const switchToTags = () => {
     setActiveWindow("registerTags");
   }
 
-  const contextValue = { switchToCredentials, switchToSelfMetrics, switchToBuddyMetrics, switchToProfile, switchToTags };
+  const contextValue = { switchToCredentials, switchToSelfMetrics, switchToBuddyMetrics, switchToProfile, switchToTags, switchToPersonalInfo };
 
   return (
     <RegisterContext.Provider value={contextValue}>
@@ -39,6 +44,7 @@ const Register = () => {
         {activeWindow === "registerSelfMetrics" && <SelfMetrics />}
         {activeWindow === "registerBuddyMetrics" && <BuddyMetrics />}
         {activeWindow === "registerProfile" && <Profile />}
+        {activeWindow === "registerPersonalInfo" && <PersonalInfo />}
         {activeWindow === "registerTags" && <Tags />}
       </Container>
     </RegisterContext.Provider>

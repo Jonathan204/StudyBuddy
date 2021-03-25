@@ -10,7 +10,8 @@ const SelfMetrics = () => {
   const { switchToBuddyMetrics } = useContext(RegisterContext);
   const { switchToProfile } = useContext(RegisterContext);
   const { switchToTags } = useContext(RegisterContext);
-
+  const { switchToPersonalInfo } = useContext(RegisterContext);
+  
   const [selfMetrics, setSelfMetrics] = useState({
     chattyValue: localStorage.getItem('selfChatty'),
     seriousValue: localStorage.getItem('selfSerious'),
@@ -25,6 +26,7 @@ const SelfMetrics = () => {
         <button onClick={switchToCredentials}></button>
         <button className="active-nav-btn"></button>
         <button onClick={switchToBuddyMetrics}></button>
+        <button onClick={switchToPersonalInfo}></button>
         <button onClick={switchToProfile}></button>
         <button onClick={switchToTags}></button>
       </Row>
