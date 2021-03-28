@@ -28,7 +28,7 @@ const ProfileCard = () => {
 
   const handleMatchClicked = async (event) => {
     var matchButton = document.getElementsByClassName("profile-match-btn")[0];
-    matchButton.innerHTML = "Request Sent!"
+    matchButton.innerHTML = "You Confirmed!"
     matchButton.disabled = true;
   }
 
