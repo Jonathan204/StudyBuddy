@@ -5,13 +5,12 @@ import  HomePage  from "./HomePage";
 import  HomeMetrics  from "./Metrics";
 import  WantMetrics  from "./WantMetrics";
 import "./styles.css";
-import "../Account/styles.css"; // just so we update with other changes
+import "../Account/styles.css";
 
 const Home = () => {
 
   const [activeWindow, setActiveWindow] = useState("homeCredentials");
 
-  //not hooked up yet
   const switchToHome = async (event) => {
     setActiveWindow("homeCredentials");
   };
@@ -31,7 +30,6 @@ const Home = () => {
         {activeWindow === "homeCredentials" && <HomePage />}
         {activeWindow === "homeSelfMetrics" && <HomeMetrics />}
         {activeWindow === "homeWantMetrics" && <WantMetrics />}
-        
       </Container>
     </HomeContext.Provider>
   );

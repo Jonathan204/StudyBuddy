@@ -37,7 +37,7 @@ const Profile = () => {
         <button className="active-nav-btn"></button>
         <button onClick={switchToTags}></button>
       </Row>
-      <Row className="mt-4 align-text-center">
+      <Row className="mt-2 align-text-center">
         <Col>
           <h5>Let's set up your profile.</h5>
           <ProfilePicture
