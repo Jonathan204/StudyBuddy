@@ -1,11 +1,22 @@
 import React, { useContext, useState } from "react";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import { HomeContext } from "./HomeContext";
+import { useHistory } from "react-router-dom";
 import LoaderButton from "../Button/LoadingButton";
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 const HomeMetrics = () => {
+  const history = useHistory();
+
+  const handleMessagesClicked = async (event) => {
+    history.push("/messagelist");
+  };
+
+  const handleSettingsClicked = async (event) => {
+    history.push("/underdevelopment");
+  };
+
   const { switchToHome } = useContext(HomeContext);
   const { switchToWantMetrics } = useContext(HomeContext);
 
@@ -79,12 +90,12 @@ const HomeMetrics = () => {
         </Row>
 
         </Container>
-        <Row className="mt-auto mb-3 container-fluid" style={{backgroundColor:'#3A506B'}}>
-            <i className="bi bi-house-fill" onClick={switchToHome} style={{ color: '#EEF1EF', fontSize: '2em' }}></i>
+        <Row className="mt-auto container-fluid" style={{backgroundColor:'#3A506B'}}>
+            <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }} onClick={switchToHome}></i>
             <Col></Col>
-            <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}}></i></Col>
+            <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i></Col>
             <Col></Col>
-            <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }}></i>
+            <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
         </Row>       
     </Container>
   );

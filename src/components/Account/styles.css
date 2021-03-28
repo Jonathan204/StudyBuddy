@@ -58,6 +58,7 @@ body {
   margin-top: 150px;
   background-color:#0B132B;
 }
+
 .personal-buttons{
   position: relative;
   top: 141px;
@@ -284,14 +285,6 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1C2541;
-}
- 
-::-webkit-scrollbar-thumb {
-  background: #888; 
+  width: 0px;
 }
 

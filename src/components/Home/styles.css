@@ -1,14 +1,13 @@
-
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-.btn-primary, btn-primary:hover, btn-primary:active, btn-primary:visited {
+.matches-btn, matches-btn:hover, matches-btn:active, matches-btn:visited {
     background-color: blue !important; 
     color: white !important;
     border: none !important;
 }
 
-.btn-secondary, btn-secondary:hover, btn-secondary:active, btn-secondary:visited {
-    background-color: #EEF1EF !important;
+.metrics-btn, metrics-btn:hover, metrics-btn:active, metrics-btn:visited {
+    background-color: #A9B4C2 !important;
     color: black !important;
     border: none !important;
 }
@@ -36,4 +35,382 @@ margin: auto;
 
 .metrics-nav button:hover {
 background-color: #A9B4C2;
+}
+
+.container-fluid {
+  padding: 4px 30px;
+  width: 111%;
+  margin-bottom: -2px;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.bi-house-fill {
+  cursor: pointer;
+}
+
+.bi-chat-square-dots-fill {
+  cursor: pointer;
+}
+
+.bi-gear-fill {
+  cursor: pointer;
+}
+
+.matches-header {
+  width: 100%;
+  color: #EEF1EF !important;
+}
+
+.matches-header h5 {
+  padding: 8px 0;
+}
+
+.matches-list {
+  height: 420px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 80px;
+  padding: 8px 5px;
+  flex-direction: row;
+  background-color: #A9B4C2;
+  border: none;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card h6 {
+  color: white;
+  text-align: center;
+}
+
+.card img {
+  width: 25%;
+  height: 65px;
+}
+
+.card-body {
+  padding: 25px 0;
+  color: white;
+  text-align: center;
+}
+
+
+/* .card {
+  width: 100%;
+  height: 90px;
+  padding: 8px 5px;
+  flex-direction: row;
+  background-color: #A9B4C2;
+  border: none;
+  display: inline-block;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card h6 {
+  color: white;
+  text-align: center;
+}
+
+.card img {
+  width: 25%;
+  height: 65px;
+}
+
+.card-body {
+  padding: 25px 0;
+  color: white;
+  text-align: center;
+} */
+
+.bi-arrow-left-square-fill {
+  float: left;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.bi-filter-square-fill {
+  font-size: 25px;
+  cursor: pointer;
+  float: right;
+}
+
+.bi-arrow-left-circle-fill {
+  float: left;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.home-window {
+  position: relative;
+}
+
+.profile-card {
+  width: 100%;
+  height: 450px;
+  background-color: #A9B4C2;
+  color: #EEF1EF !important;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.profile-card p {
+  font-size: 13px;
+  float: left;
+}
+
+.profile-header {
+  width: 100%;
+  padding: 0px;
+}
+
+.profile-header p {
+  padding: 10px 0;
+  float: right;
+  font-size: 17px;
+}
+
+.profile-card-img {
+  width: 100%;
+  padding: 0 90px;
+}
+
+.profile-card-img img {
+  width: 85%;
+  height: 75px;
+  padding: 0;
+}
+
+.profile-school-info {
+  background-color:#EEF1EF;
+  margin: 0 20px;
+  color: #3A506B;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.school-detail {
+  display: inline-block;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.school-detail h6 {
+  font-weight: bold;
+}
+
+.school-detail span {
+  float: right;
+  font-weight: normal;
+}
+
+.profile-bio {
+  height: 65px;
+  background-color:#EEF1EF;
+  margin: 0 20px;
+  padding: 0 5px;
+  color: #3A506B;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.profile-bio p {
+  margin-top: -12px;
+  line-height: 1;
+}
+
+.profile-tags li {
+  background-color: #00a651;
+  color: #EEF1EF;
+  padding: 2px 5px;
+  border: none;
+  border-radius: 15px;
+  list-style-type: none;
+  display: inline-block;
+  margin: 3px;
+  font-size: 13px;
+}
+
+.profile-match-btn {
+  background-color: #0070ff; 
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.chat-header {
+  color: #EEF1EF;
+}
+
+.msg-match {
+  margin: 0;
+  text-align: left;
+}
+
+.msg-match h6 {
+  margin-left: 2px;;
+  text-align: left;
+  padding: 23px 2px;
+}
+
+.msg-match p {
+  margin-left: 2px;
+  color: #EEF1EF;
+  font-size: 12px;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.card-compatibility h6 {
+  padding: 0;
+  text-align: right;
+}
+
+
+.card-compatibility p {
+  padding: 0;
+  font-size: 9px;
+}
+
+.friend-reqs {
+  margin: 0;
+  display: inline-block;
+}
+
+.friend-reqs p {
+  text-align: left;
+  padding: 24px 5px;
+  color: white;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.friend-reqs img {
+  width: 25%;
+  height: 65px;
+}
+
+.btn-group-req {
+  padding: 0;
+  color: white;
+  display: inline-flex;
+  left: 20px;
+  position: relative;
+  margin:0;
+  top: -25px;
+}
+
+.btn-group-req p {
+  font-size: 9px;
+  color: white;
+  text-align: right;
+  padding: 0 3px;
+  margin: 4px 0;
+}
+
+.btn-group-req span {
+  line-height: 100%;
+}
+
+.btn-success {
+  padding: 0 25%;
+  width: 100%;
+  height: 30px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+.btn-danger {
+  padding: 0 25px;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 0;
+}
+
+.bi-check {
+  color: white;
+  font-size: 30px;
+  padding: 0;
+}
+
+.bi-x {
+  color: white;
+  font-size: 30px;
+}
+
+.req-card {
+  width: 100%;
+  height: 95px;
+  padding: 8px 5px;
+  background-color: #A9B4C2;
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.req-card img {
+  width: 27%;
+  height: 70px;
+  float: left;
+  position: relative;
+  top: 5px;
+}
+
+.req-card p {
+  padding: 0 50px;
+}
+
+.req-header {
+  width: 100%;
+}
+
+.req-header p {
+  text-align: center;
+  padding: 25px 0;
+  font-size: 16px;
+}
+
+.timestamp {
+  width: 100%;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.timestamp p {
+  width: 100%;
+  text-align: right;
+  font-size: 10px !important;
+  position: relative;
+  left: 50px;
+}
+
+.card-info {
+  padding: 0;
+}
+
+.card-info h6 {
+  padding: 9px 0;
+}
+
+.card-info p {
+  position: relative;
+  top: -8px;
+  line-height: 1;
+  left: 5px;
+  font-size: 11px;
+  margin:0;
 }

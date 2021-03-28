@@ -1,11 +1,26 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { HomeContext } from "./HomeContext";
+import { useHistory } from "react-router-dom";
 import "./styles.css";
 import "../Account/styles.css"; // just so we update with other changes
 
 const HomePage = () => {
-    const { switchToSelfMetrics } = useContext(HomeContext);
+  const history = useHistory();
+
+  const handleMessagesClicked = async (event) => {
+    history.push("/messagelist");
+  };
+
+  const handleSettingsClicked = async (event) => {
+    history.push("/underdevelopment");
+  };
+
+  const handleMatchesClicked = async (event) => {
+    history.push("/matches");
+  };
+
+  const { switchToSelfMetrics } = useContext(HomeContext);
 
   return (
     <Container className="border account-window account-height">
@@ -17,22 +32,22 @@ const HomePage = () => {
 
       <Row className="mid-buffer">
         <Col className="col-lg">
-          <Button className="btn btn-secondary btn-lg btn-block rounded-pill" onClick={switchToSelfMetrics}>
+          <Button className="btn metrics-btn btn-lg btn-block rounded-pill" onClick={switchToSelfMetrics}>
             Metrics
           </Button>
-          <Button className="mt-4 btn btn-primary btn-lg btn-block rounded-pill">
+          <Button className="mt-4 btn btn-primary btn-lg btn-block rounded-pill" onClick={handleMatchesClicked}>
             Matches
           </Button>
         </Col>
       </Row>
 
-      <Row className="mt-auto mb-3 container-fluid" style={{backgroundColor:'#3A506B'}}>
+      <Row className="mt-auto container-fluid" style={{backgroundColor:'#3A506B'}}>
     
         <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }}></i>
         <Col></Col>
-        <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}}></i></Col>
+        <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i></Col>
         <Col></Col>
-        <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }}></i>
+        <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
     
       </Row>
         
