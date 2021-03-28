@@ -403,7 +403,7 @@ background-color: #A9B4C2;
 }
 
 .card-info h6 {
-  padding: 9px 0;
+  padding: 22px 0;
 }
 
 .card-info p {
@@ -413,4 +413,14 @@ background-color: #A9B4C2;
   left: 5px;
   font-size: 11px;
   margin:0;
+}
+
+.fr-card {
+  cursor: pointer;
+}
+
+.btn-group-profile-req {
+  width: 100%;
+  display: inline-flex;
+  padding: 10px;
 }

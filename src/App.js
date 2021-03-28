@@ -13,6 +13,7 @@ import Messaging from "./components/Home/Chat/Messaging";
 import UnderDevelopment from './components/UnderDevelopment/UnderDevelopment';
 import ProfileCard from './components/ProfileCard/ProfileCard';
 import Matches from './components/Matches/Matches';
+import FriendReqProfile from './components/ProfileCard/FriendReqProfile';
 
 function App() {
   return (
@@ -49,6 +50,11 @@ function App() {
           <Route path="/profilecard">
             <Container>
               <ProfileCard />  
+            </Container>
+          </Route>
+          <Route path="/friendreqprofile">
+            <Container>
+              <FriendReqProfile />  
             </Container>
           </Route>
           <Route path="/underdevelopment">

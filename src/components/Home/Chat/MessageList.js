@@ -21,16 +21,22 @@ const MessageList = () => {
     history.push("/messaging");
   };
 
+  const {switchToFriendRequests} = useContext(MessageContext);
+
   return (
     <Container className="border account-window account-height">
       <h4 className="mt-3 chat-header">Buddy Chat</h4>
+
+      <div className="mt-1 btn-group" >
+        <button className="btn btn-outline-primary active">Messages</button>
+        <button className="btn btn-outline-primary" onClick={switchToFriendRequests}>Friend Requests</button>
+      </div>
+
       <Row className="mt-3 msg-match" >
         <div className="card" onClick={handleMessageClicked}>
             <img className="rounded-circle" src="/images/shakespeare.jpg"></img>
             <div className="card-info">
-              <h6 className="ml-1">William Shakespeare</h6>
-              <p>You matched with William!</p>
-              <p>Send them your first message.</p>
+              <h6 className="ml-2">William Shakespeare</h6>
             </div>
             <div className='ml-2 card-compatibility'>
                 <h6>97%</h6>

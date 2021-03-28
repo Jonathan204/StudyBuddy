@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
 
-const ProfileCard = () => {
+const FriendReqProfile = () => {
   const location = useLocation();
   const profileName = location.state.name;
   const userCompatibility = location.state.compatibility;
@@ -15,7 +15,7 @@ const ProfileCard = () => {
   };
 
   const handleBackClicked = async (event) => {
-    history.push("/matches");
+    history.push("/messagelist");
   };
 
   const handleHomeClicked = async (event) => {
@@ -26,12 +26,6 @@ const ProfileCard = () => {
     history.push("/messagelist");
   };
 
-  const handleMatchClicked = async (event) => {
-    var matchButton = document.getElementsByClassName("profile-match-btn")[0];
-    matchButton.innerHTML = "Request Sent!"
-    matchButton.disabled = true;
-  }
-
   return (
     <Container className="border account-window account-height">
       <Row className='mt-4 profile-card'>
@@ -39,7 +33,7 @@ const ProfileCard = () => {
           <Col onClick={handleBackClicked}><i class="bi bi-arrow-left-square-fill"></i></Col>
           <Col><p>{userCompatibility} Match</p></Col>
         </div>
-
+        <br></br>
         <div className="mt-5 profile-card-img">
           <img className="rounded-circle" src={imgPath}></img>
         </div>
@@ -66,8 +60,6 @@ const ProfileCard = () => {
           <li>Oats</li>
           <li>Poetry</li>
         </div>
-
-        <Button className="mt-3 profile-match-btn" onClick={handleMatchClicked}>Send Friend Request</Button>
       </Row>
 
       <Row className="mt-auto container-fluid" style={{backgroundColor:'#3A506B'}}>
@@ -83,4 +75,4 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export default FriendReqProfile;
