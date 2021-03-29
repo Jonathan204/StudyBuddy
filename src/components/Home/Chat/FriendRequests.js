@@ -72,18 +72,14 @@ const FriendRequests = () => {
           </div>
         }
       </Row>
-
-      <Row className="mt-auto container-fluid pl-0 pr-0">
         
-        <Row className="container-fluid ml-0 mr-0 " style={{backgroundColor:'#3A506B'}}>  
-          <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }} onClick={handleHomeClicked}></i>
-          <Col></Col>
-          <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}}></i></Col>
-          <Col></Col>
-          <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
-        </Row>   
-      </Row>
-        
+      <Row className="mt-auto container-fluid ml-0 mr-0 " style={{backgroundColor:'#3A506B'}}>  
+        <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }} onClick={handleHomeClicked}></i>
+        <Col></Col>
+        <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}}></i></Col>
+        <Col></Col>
+        <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
+      </Row>   
       
     </Container>
   );
