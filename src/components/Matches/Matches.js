@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
@@ -21,12 +21,46 @@ const Matches = () => {
     history.push("/profilecard", {name: name, compatibility: compatibility, imgPath: imgPath});
   };
 
+  const handleFilterClicked = async (event) => {
+    var popup = document.getElementById("filter-popup");
+    popup.classList.toggle("show");
+  };
+
+  const [notifCount, setNotifCount] = useState(0);
+  useEffect(() => {
+    const initialValue = localStorage.getItem("notifCount");
+    var notifBadge = document.getElementById("badge");
+
+    if (initialValue) {
+      setNotifCount(initialValue);
+
+      if (initialValue > 0) {
+        notifBadge.style.visibility = "visible";
+      } else {
+        notifBadge.style.visibility = "hidden";
+      }
+    } 
+  }, []);
+
   return (
     <Container className="border account-window account-height">
       <Row className="mt-3 matches-header">
         <Col onClick={handleHomeClicked}><i class="bi bi-arrow-left-square-fill"></i></Col>
         <Col><h5>Matches</h5></Col>
-        <Col><i class="bi bi-filter-square-fill"></i></Col>
+        <Col>
+          <div className="ml-4 popup" onClick={handleFilterClicked}>
+            <i class="bi bi-filter-square-fill"></i>
+            <span className="popuptext" id="filter-popup">
+              <h6>Sort By:</h6>
+              <input type="radio" name="matches" checked></input>
+              <label>Compatibility: High to Low</label><br></br>
+              <input type="radio" name="matches"></input>
+              <label>Compatibility: Low to High</label><br></br>
+              <input type="radio" name="matches"></input>
+              <label>Newest Matches</label>
+            </span>
+          </div>
+        </Col>
       </Row>
       <Row className="matches-list">
         <div className="card" 
@@ -106,7 +140,10 @@ const Matches = () => {
       <Row className="mt-auto container-fluid" style={{backgroundColor:'#3A506B'}}>
         <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }} onClick={handleHomeClicked}></i>
         <Col></Col>
-        <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i></Col>
+        <Col className="message-nav">
+          <i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i>
+          <span className="badge" id="badge">{notifCount}</span>
+        </Col>        
         <Col></Col>
         <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
       </Row>

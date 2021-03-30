@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, useEffect }  from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -28,9 +28,33 @@ const ProfileCard = () => {
 
   const handleMatchClicked = async (event) => {
     var matchButton = document.getElementsByClassName("profile-match-btn")[0];
+    var notifBadge = document.getElementById("badge");
     matchButton.innerHTML = "You Confirmed!"
     matchButton.disabled = true;
+
+    notifBadge.style.visibility = "visible";
+    setNotifCount(prevCount => {
+      const newCount = Number(prevCount) + 1;
+      localStorage.setItem("notifCount", newCount);
+      return newCount;
+    });
   }
+
+  const [notifCount, setNotifCount] = useState(0);
+  useEffect(() => {
+    const initialValue = localStorage.getItem("notifCount");
+    var notifBadge = document.getElementById("badge");
+
+    if (initialValue) {
+      setNotifCount(initialValue);
+
+      if (initialValue > 0) {
+        notifBadge.style.visibility = "visible";
+      } else {
+        notifBadge.style.visibility = "hidden";
+      }
+    } 
+  }, []);
 
   return (
     <Container className="border account-window account-height">
@@ -73,7 +97,10 @@ const ProfileCard = () => {
       <Row className="mt-auto container-fluid" style={{backgroundColor:'#3A506B'}}>
         <i className="bi bi-house-fill" style={{ color: '#EEF1EF', fontSize: '2em' }} onClick={handleHomeClicked}></i>
         <Col></Col>
-        <Col><i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i></Col>
+        <Col className="message-nav">
+          <i className="bi bi-chat-square-dots-fill ml-auto mr-auto" style={{color: '#EEF1EF', fontSize:'2em', textAlign:'center'}} onClick={handleMessagesClicked}></i>
+          <span className="badge" id="badge">{notifCount}</span>
+        </Col>        
         <Col></Col>
         <i className="bi bi-gear-fill" style={{ color: '#EEF1EF', fontSize: '2em', textAlign: 'right' }} onClick={handleSettingsClicked}></i>
       </Row>
